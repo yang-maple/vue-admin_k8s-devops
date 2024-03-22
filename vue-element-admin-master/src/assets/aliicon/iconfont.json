@@ -1,0 +1,464 @@
+{
+  "id": "4398000",
+  "name": "k8s_ops",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7533287",
+      "name": "验证码",
+      "font_class": "yanzhengma",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "1973724",
+      "name": "添加文件",
+      "font_class": "wenjiantianjia",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "3092320",
+      "name": "添加文件",
+      "font_class": "tianjiawenjian",
+      "unicode": "e790",
+      "unicode_decimal": 59280
+    },
+    {
+      "icon_id": "6176555",
+      "name": "存储卷",
+      "font_class": "cunchujuan",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "10110191",
+      "name": "存储卷",
+      "font_class": "cunchujuan1",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "17420036",
+      "name": "命名空间",
+      "font_class": "mingmingkongjian",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "9518485",
+      "name": "计算节点",
+      "font_class": "jisuanjiedian",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
+      "icon_id": "6932978",
+      "name": "icon_网络资源数",
+      "font_class": "icon_wangluoziyuanshu",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "6933022",
+      "name": "icon_网络资源数",
+      "font_class": "icon_wangluoziyuanshu1",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "7159338",
+      "name": "集群",
+      "font_class": "jiqun",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "10721094",
+      "name": "网络",
+      "font_class": "wangluo",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "3176611",
+      "name": "Docker",
+      "font_class": "Docker",
+      "unicode": "e9f3",
+      "unicode_decimal": 59891
+    },
+    {
+      "icon_id": "3756733",
+      "name": "POD",
+      "font_class": "POD",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "4766849",
+      "name": "deployment unit",
+      "font_class": "deploymentunit",
+      "unicode": "e7d2",
+      "unicode_decimal": 59346
+    },
+    {
+      "icon_id": "6830202",
+      "name": "statefulset",
+      "font_class": "statefulset",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "15270250",
+      "name": "job",
+      "font_class": "job",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "15378389",
+      "name": "gitpod",
+      "font_class": "gitpod",
+      "unicode": "eba1",
+      "unicode_decimal": 60321
+    },
+    {
+      "icon_id": "23534484",
+      "name": "Deployment",
+      "font_class": "Deployment",
+      "unicode": "e743",
+      "unicode_decimal": 59203
+    },
+    {
+      "icon_id": "27298910",
+      "name": "DaemonSet",
+      "font_class": "DaemonSet",
+      "unicode": "e6ce",
+      "unicode_decimal": 59086
+    },
+    {
+      "icon_id": "29978843",
+      "name": "daemonset",
+      "font_class": "daemonset",
+      "unicode": "e7ec",
+      "unicode_decimal": 59372
+    },
+    {
+      "icon_id": "29978861",
+      "name": "deployment",
+      "font_class": "deployment",
+      "unicode": "e7ed",
+      "unicode_decimal": 59373
+    },
+    {
+      "icon_id": "33772320",
+      "name": "assets_daemonset",
+      "font_class": "assets_daemonset",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "34574825",
+      "name": "statefulset",
+      "font_class": "statefulset1",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "37733682",
+      "name": "statefulset",
+      "font_class": "statefulset2",
+      "unicode": "e830",
+      "unicode_decimal": 59440
+    },
+    {
+      "icon_id": "38900811",
+      "name": "deployment-copy",
+      "font_class": "deployment-copy",
+      "unicode": "eba2",
+      "unicode_decimal": 60322
+    },
+    {
+      "icon_id": "3868272",
+      "name": "节点管理",
+      "font_class": "jiedianguanli",
+      "unicode": "eb64",
+      "unicode_decimal": 60260
+    },
+    {
+      "icon_id": "6246293",
+      "name": "节点",
+      "font_class": "jiedian",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "21855166",
+      "name": "namespace",
+      "font_class": "namespace",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "32117154",
+      "name": "名称空间",
+      "font_class": "mingchengkongjian",
+      "unicode": "e6ad",
+      "unicode_decimal": 59053
+    },
+    {
+      "icon_id": "32658564",
+      "name": "Namespaces",
+      "font_class": "Namespaces",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "36000161",
+      "name": "namespace",
+      "font_class": "namespace1",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "32067636",
+      "name": "持久卷",
+      "font_class": "chijiujuan",
+      "unicode": "e6df",
+      "unicode_decimal": 59103
+    },
+    {
+      "icon_id": "17174669",
+      "name": "ingress",
+      "font_class": "ingress",
+      "unicode": "e691",
+      "unicode_decimal": 59025
+    },
+    {
+      "icon_id": "25956274",
+      "name": "ingress",
+      "font_class": "ingress1",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "38488293",
+      "name": "ingress_nginx",
+      "font_class": "ingress_nginx",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "38678410",
+      "name": "BCSIngress",
+      "font_class": "BCSIngress",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "38832826",
+      "name": "ingress",
+      "font_class": "ingress2",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "3300519",
+      "name": "config_map",
+      "font_class": "configmap",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "3479111",
+      "name": "数据集",
+      "font_class": "shujuji",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    },
+    {
+      "icon_id": "23770741",
+      "name": "存储类",
+      "font_class": "cunchulei",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "27299018",
+      "name": "ConfigMap配置文件",
+      "font_class": "ConfigMappeizhiwenjian",
+      "unicode": "e6d2",
+      "unicode_decimal": 59090
+    },
+    {
+      "icon_id": "35410995",
+      "name": "服务3",
+      "font_class": "fuwu3",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "35892107",
+      "name": "存储类型配置",
+      "font_class": "cunchuleixingpeizhi",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "35895436",
+      "name": "存储类型配置",
+      "font_class": "cunchuleixingpeizhi1",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "38898811",
+      "name": "ConfigMap配置文件-copy",
+      "font_class": "ConfigMappeizhiwenjian-copy",
+      "unicode": "eb56",
+      "unicode_decimal": 60246
+    },
+    {
+      "icon_id": "25604138",
+      "name": "秘钥服务",
+      "font_class": "a-nav_secretkey",
+      "unicode": "e742",
+      "unicode_decimal": 59202
+    },
+    {
+      "icon_id": "38898383",
+      "name": "秘钥服务-copy",
+      "font_class": "a-nav_secretkey-copy",
+      "unicode": "eb55",
+      "unicode_decimal": 60245
+    },
+    {
+      "icon_id": "731122",
+      "name": "更多",
+      "font_class": "gengduo1",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "38863788",
+      "name": "更多-copy",
+      "font_class": "gengduo1-copy",
+      "unicode": "eb54",
+      "unicode_decimal": 60244
+    },
+    {
+      "icon_id": "7532875",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "35361005",
+      "name": "s-promotion",
+      "font_class": "s-promotion",
+      "unicode": "e922",
+      "unicode_decimal": 59682
+    },
+    {
+      "icon_id": "383637",
+      "name": "纸飞机",
+      "font_class": "zhifeiji",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "4071670",
+      "name": "k8s",
+      "font_class": "ks",
+      "unicode": "e72d",
+      "unicode_decimal": 59181
+    },
+    {
+      "icon_id": "868656",
+      "name": "弹性存储",
+      "font_class": "yidongyunkongzhitaiicon06",
+      "unicode": "e74e",
+      "unicode_decimal": 59214
+    },
+    {
+      "icon_id": "5387406",
+      "name": "服务流",
+      "font_class": "fuwuliu",
+      "unicode": "eaca",
+      "unicode_decimal": 60106
+    },
+    {
+      "icon_id": "5387779",
+      "name": "服务流_o",
+      "font_class": "fuwuliu_o",
+      "unicode": "eb53",
+      "unicode_decimal": 60243
+    },
+    {
+      "icon_id": "14151855",
+      "name": "概览",
+      "font_class": "gailan",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "23094487",
+      "name": "顶部导航-集群管理",
+      "font_class": "jiqunguanli",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "23169763",
+      "name": "集群管理-配置管理",
+      "font_class": "jiqunguanli-peizhiguanli",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "29615342",
+      "name": "集群管理",
+      "font_class": "jiqunguanli1",
+      "unicode": "e7b3",
+      "unicode_decimal": 59315
+    },
+    {
+      "icon_id": "30696000",
+      "name": "Pod容器组",
+      "font_class": "Podrongqizu",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "37244108",
+      "name": "工作负载集群",
+      "font_class": "gongzuofuzaijiqun",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "37656306",
+      "name": "工作负载",
+      "font_class": "gongzuofuzai",
+      "unicode": "e744",
+      "unicode_decimal": 59204
+    },
+    {
+      "icon_id": "37997784",
+      "name": "集群管理",
+      "font_class": "jiqunguanli2",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "38506700",
+      "name": "工作负载",
+      "font_class": "gongzuofuzai1",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    }
+  ]
+}
