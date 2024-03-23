@@ -12,7 +12,7 @@ export function getNamespaceDeatil(data) {
   return request({
     url: '/namespaces/detail',
     method: 'get',
-    params: { data }
+    params: data
   })
 }
 

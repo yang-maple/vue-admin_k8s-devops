@@ -101,7 +101,7 @@
         <el-table-column label="创建时间" prop="age" width="140" />
         <el-table-column label="操作" width="70" align="center">
           <template #default="scope">
-            <el-dropdown trigger="click">
+            <el-dropdown trigger="click" @command="handleEdit(scope.row.name)">
               <el-button type="text">
                 <i class="el-icon-s-operation" :style="{ fontSize: '18px' }" />
               </el-button>
@@ -109,7 +109,7 @@
                 <el-dropdown-menu>
                   <el-dropdown-item
                     icon="el-icon-edit"
-                    @click="dialogFormVisible = true, handleEdit(scope.row.name)"
+                    command="a"
                   >编辑</el-dropdown-item>
                   <el-dropdown-item
                     icon="el-icon-delete"
@@ -152,6 +152,7 @@ export default {
       },
       maxitem: [],
       namespacesItem: [],
+      editdialog: false,
       dialogFormVisible: false,
       dialogcreatens: false,
       form: {
@@ -178,19 +179,24 @@ export default {
   },
   methods: {
     handleEdit(name) {
-      this.$ajax({
-        method: 'get',
-        url: '/namespaces/detail',
-        params: {
-          namespace_name: name
-        }
-      }).then((res) => {
-        this.activeName = 'json'
-        this.aceConfig.lang = 'json'
-        this.content = JSON.stringify(res.data.detail, null, 2)
-      }).catch((res) => {
-        console.log(res.data)
+      this.editdialog = true
+      console.log(name)
+      this.$store.dispatch('namespace/getNamespaceDeatil', name).then((res) => {
+        console.log(res)
       })
+      // this.$ajax({
+      //   method: 'get',
+      //   url: '/namespaces/detail',
+      //   params: {
+      //     namespace_name: name
+      //   }
+      // }).then((res) => {
+      //   this.activeName = 'json'
+      //   this.aceConfig.lang = 'json'
+      //   this.content = JSON.stringify(res.data.detail, null, 2)
+      // }).catch((res) => {
+      //   console.log(res.data)
+      // })
     },
     // handleUpdate() {
     //   let data = this.content
