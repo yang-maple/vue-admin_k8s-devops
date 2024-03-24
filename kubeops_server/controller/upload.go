@@ -91,7 +91,8 @@ func (u *upload) createYaml(c *gin.Context) {
 		return
 	}
 	// 创建资源
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
+	id, _ := c.Get("claims_id")
+	uuid, _ := id.(int)
 	msg, err := service.Upload.CreateYaml(yamlStr, uuid)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{

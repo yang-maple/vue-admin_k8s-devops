@@ -52,6 +52,9 @@
   left: 0;
   position: relative;
   margin: 0 auto;
+  .el-dialog__header{
+    border-bottom: 1px solid  #ededed;
+  }
 }
 
 // refine element ui upload

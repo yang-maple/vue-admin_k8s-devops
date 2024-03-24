@@ -42,14 +42,13 @@
       </el-col>
       <el-col :span="6">
         <div class="header-grid-content" style="text-align: right;">
-          <el-button type="info" round icon="el-icon-refresh" />
-          <el-button type="info" round @click="dialogcreatens = true">
+          <el-button type="info" round icon="el-icon-refresh" @click="Refresh()" />
+          <el-button type="info" round @click="adddialog = true">
             创建
           </el-button>
         </div>
       </el-col>
     </el-row>
-
     <div class="table-bg-purple">
       <el-table :data="namespacesItem" :header-cell-style="{ background: '#e6e7e9' }" size="small" empty-text="抱歉，暂无数据">
         <el-table-column label="名称" width="200">
@@ -101,7 +100,7 @@
         <el-table-column label="创建时间" prop="age" width="140" />
         <el-table-column label="操作" width="70" align="center">
           <template #default="scope">
-            <el-dropdown trigger="click" @command="handleEdit(scope.row.name)">
+            <el-dropdown trigger="click" @command="handleCommand">
               <el-button type="text">
                 <i class="el-icon-s-operation" :style="{ fontSize: '18px' }" />
               </el-button>
@@ -109,11 +108,11 @@
                 <el-dropdown-menu>
                   <el-dropdown-item
                     icon="el-icon-edit"
-                    command="a"
+                    :command="beforeCommand('edit',scope.row.name)"
                   >编辑</el-dropdown-item>
                   <el-dropdown-item
                     icon="el-icon-delete"
-                    @click="messageboxOperate(scope.row, 'delete')"
+                    :command="beforeCommand('delete',scope.row.name)"
                   >删除</el-dropdown-item>
                 </el-dropdown-menu>
               </template>
@@ -137,12 +136,48 @@
         </el-col>
       </el-row>
     </div>
+
+    <div class="dialog-edit">
+      <el-dialog :visible.sync="editdialog" :before-close="handleClose" title="编辑Yaml" top="5vh">
+        <CodeEdit ref="editor" v-model="content" language="yaml" />
+        <template #footer>
+          <span class="dialog-footer">
+            <el-button type="primary" @click="handleUpdate()">更新</el-button>
+            <el-button @click="handleClose">
+              取消
+            </el-button>
+          </span>
+        </template>
+      </el-dialog>
+    </div>
+
+    <div class="dialog-add">
+      <el-dialog :visible.sync="adddialog" title="创建命名空间">
+        <el-form :model="form" label-width="15%">
+          <el-form-item label="名称">
+            <el-input v-model="form.namespace" autocomplete="off" style="width: 90%;" />
+            <div><span style="font-size: small;">长度为 1 ~ 63 个字符，只能包含数字、小写字母和中划线（-），且首尾只能是字母或数字</span></div>
+          </el-form-item>
+        </el-form>
+        <template #footer>
+          <span class="dialog-footer">
+            <el-button type="primary" @click="handleCreate">确认创建</el-button>
+            <el-button type="danger">
+              取消
+            </el-button>
+          </span>
+        </template>
+      </el-dialog>
+    </div>
   </div>
 </template>
 
 <script scoped>
+import CodeEdit from '../components/Editor'
+import yaml from 'js-yaml'
 import Vue from 'vue'
 export default {
+  components: { CodeEdit },
   data() {
     return {
       serachInfo: {
@@ -153,24 +188,13 @@ export default {
       maxitem: [],
       namespacesItem: [],
       editdialog: false,
-      dialogFormVisible: false,
-      dialogcreatens: false,
+      adddialog: false,
       form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: '',
-        newnamespaces: ''
+        namespace: '',
+        newnamespace: ''
       },
-      // filter_name: 'nginx',
       total: 0,
       page_size: [1, 10, 20, 50, 100],
-      // limit: 10,
-      // page: 1,
       content: ''
     }
   },
@@ -182,77 +206,81 @@ export default {
       this.editdialog = true
       console.log(name)
       this.$store.dispatch('namespace/getNamespaceDeatil', name).then((res) => {
-        console.log(res)
+        this.content = yaml.dump(res.data.detail)
       })
-      // this.$ajax({
-      //   method: 'get',
-      //   url: '/namespaces/detail',
-      //   params: {
-      //     namespace_name: name
-      //   }
-      // }).then((res) => {
-      //   this.activeName = 'json'
-      //   this.aceConfig.lang = 'json'
-      //   this.content = JSON.stringify(res.data.detail, null, 2)
-      // }).catch((res) => {
-      //   console.log(res.data)
-      // })
     },
-    // handleUpdate() {
-    //   let data = this.content
-    //   let datajson = {}
-    //   try {
-    //     if (this.aceConfig.lang == 'yaml') {
-    //       data = JSON.stringify(yaml.load(data), null, 2)
-    //     }
-    //     datajson = JSON.parse(data)
-    //   } catch (e) {
-    //     this.$message({
-    //       showClose: true,
-    //       message: '格式错误,请检查格式',
-    //       type: 'error'
-    //     })
-    //     return
-    //   }
-    //   this.$ajax.put(
-    //     '/namespaces/update',
-    //     {
-    //       data: datajson
-    //     }
-    //   ).then((res) => {
-    //     this.dialogFormVisible = false,
-    //     this.$message({
-    //       showClose: true,
-    //       message: res.msg,
-    //       type: 'success'
-    //     })
-    //   }).catch((res) => {
-    //     this.$message({
-    //       showClose: true,
-    //       message: res.reason,
-    //       type: 'error'
-    //     })
-    //   })
-    //   this.reload()
-    // },
-    handleDelete(row) {
-      this.$ajax({
-        method: 'delete',
-        url: '/namespaces/delete',
-        params: {
-          namespace_name: row.name
-        }
+    handleUpdate() {
+      let data = this.$refs.editor.saveconnect
+      let datajson = {}
+      try {
+        data = JSON.stringify(yaml.load(data), null, 2)
+        datajson = JSON.parse(data)
+      } catch (e) {
+        this.$message({
+          showClose: true,
+          message: '格式错误,请检查格式',
+          type: 'error'
+        })
+        return
       }
-      ).then((res) => {
+      this.$store.dispatch('namespace/updateNamespace', datajson).then((res) => {
         this.$message({
           showClose: true,
           message: res.msg,
-          type: 'warning'
+          type: 'success'
         })
-      }).catch((res) => {
-        console.log(res)
+        this.editdialog = false
+        setTimeout(() => {
+          this.getNamespaces()
+        }, 1000)
       })
-      this.reload()
+    },
+    handleClose() {
+      this.$confirm('未保存退出, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(_ => {
+        this.editdialog = false
+      }).catch(_ => {})
+    },
+    handleDelete(name) {
+      this.$confirm(`是否删除命名空间 ${name}`, '提示', {
+        confirmButtonText: '删除',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$store.dispatch('namespace/deleteNamespace', name).then((res) => {
+          this.$message({
+            type: 'success',
+            message: res.msg
+          })
+          setTimeout(() => {
+            this.getNamespaces()
+          }, 1000)
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
+      })
+    },
+    handleCommand(command) {
+      switch (command.command) {
+        case 'edit':
+          this.handleEdit(command.name)
+          break
+        case 'delete':
+          this.handleDelete(command.name)
+          break
+      }
+    },
+    beforeCommand(command, name) {
+      return {
+        'command': command,
+        'name': name
+      }
     },
     messageboxOperate(row, name) {
       this.$confirm(`是否${name}实例${row.name}`, '提示', {
@@ -276,44 +304,37 @@ export default {
           this.maxitem.push(3)
         }
       })
-
-      // this.$ajax({
-      //   method: 'get',
-      //   url: '/namespaces/list',
-      //   params: {
-      //     page: this.page,
-      //     limit: this.limit,
-      //     filter_name: this.filter_name
-      //   }
-      // }).then((res) => {
-      //   this.total = res.data.total
-      //   this.namespacesItem = res.data.item
-      //   for (let i = 0; i < res.data.item.length; i++) {
-      //     this.maxitem.push(3)
-      //   }
-      // }).catch((res) => {
-      //   console.log(res)
-      // })
     },
-    createNamespace() {
-      this.$ajax.post(
-        '/namespaces/create',
-        {
-          namespace_name: this.form.newnamespaces
-        }
-      ).then((res) => {
+    handleCreate() {
+      this.$store.dispatch('namespace/createNamespace', this.form.namespace).then((res) => {
         this.$message({
+          showClose: true,
           message: res.msg,
           type: 'success'
         })
-      }).catch((res) => {
-        console.log(res)
+        this.adddialog = false
+        setTimeout(() => {
+          this.getNamespaces()
+        }, 1000)
       })
-      this.reload()
+      // this.$ajax.post(
+      //   '/namespaces/create',
+      //   {
+      //     namespace_name: this.form.newnamespaces
+      //   }
+      // ).then((res) => {
+      //   this.$message({
+      //     message: res.msg,
+      //     type: 'success'
+      //   })
+      // }).catch((res) => {
+      //   console.log(res)
+      // })
+      // this.reload()
     },
     Refresh() {
       setTimeout(() => {
-        this.reload()
+        this.getNamespaces()
       }, 1000)
     },
     handleSizeChange(limit) {
@@ -334,27 +355,6 @@ export default {
         }
       })
     },
-    // yamlFormat() {
-    //   if (this.aceConfig.lang == 'yaml') {
-    //     return
-    //   }
-    //   this.aceConfig.lang = 'yaml'
-    //   this.content = yaml.dump(JSON.parse(this.content))
-    // },
-    // jsonFormat() {
-    //   if (this.aceConfig.lang == 'json') {
-    //     return
-    //   }
-    //   this.aceConfig.lang = 'json'
-    //   this.content = JSON.stringify(yaml.load(this.content), null, 2)
-    // },
-    // handleClick(tab) {
-    //   if (tab.props.name == 'yaml') {
-    //     this.yamlFormat()
-    //     return
-    //   }
-    //   this.jsonFormat()
-    // },
     showLabels(index) {
       if (this.maxitem[index] === 3) {
         Vue.set(this.maxitem, index, 99)
@@ -366,6 +366,21 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import "~@/styles/anticon.scss";
+.dialog-edit{
+  .el-dialog{
+    .el-dialog__body{
+      padding: 20px;
+      border-bottom: 1px solid #ededed;
+    }
+  }
+}
+
+.dialog-add{
+  .el-dialog{
+    width: 650px;
+  }
+}
+
 </style>

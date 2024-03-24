@@ -61,7 +61,7 @@ func (n *namespace) GetNsDetail(c *gin.Context) {
 
 func (n *namespace) DelNs(c *gin.Context) {
 	params := new(struct {
-		NamespaceName string `form:"namespace_name"`
+		NamespaceName string `json:"namespace_name"`
 	})
 	_ = c.ShouldBind(&params)
 	id, _ := c.Get("claims_id")

@@ -13,15 +13,14 @@
           fontSize: 14,
           showPrintMargin: false, //去除编辑器里的竖线
         }"
-        width="50%"
-        height="400px"
+        width="100%"
+        height="600px"
         @input="handleInput"
         @init="editorInit"
       />
     </el-card>
-    <!-- <el-button type="primary" size="small" @click="getValue">获 取</el-button> -->
-    <el-button type="primary" size="small" @click="pre">上一个主题</el-button>
-    <el-button type="primary" size="small" @click="next">下一个主题</el-button>
+    <!-- <el-button type="primary" size="small" @click="pre">上一个主题</el-button>
+    <el-button type="primary" size="small" @click="next">下一个主题</el-button> -->
   </div>
 </template>
 
@@ -121,5 +120,11 @@ export default {
 .settingDescription {
   font-size: small;
   color: #a8a8af
+}
+
+.container{
+  .el-card__body{
+    padding: 0
+  }
 }
 </style>
