@@ -198,19 +198,29 @@ func (d *deployment) CreateDeploy(data *DeploymentCreate, uuid int) (err error) 
 			},
 		},
 	})
+	//默认添加app标签
+	labels := map[string]string{
+		"app": data.Name,
+	}
+	//如果用户自定义了标签，则添加标签
+	if data.Labels != nil {
+		for k, v := range data.Labels {
+			labels[k] = v
+		}
+	}
 	deploy := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:   data.Name,
-			Labels: data.Labels,
+			Labels: labels,
 		},
 		Spec: appsv1.DeploymentSpec{
 			Replicas: &data.Replicas,
 			Selector: &metav1.LabelSelector{
-				MatchLabels: data.Labels,
+				MatchLabels: labels,
 			},
 			Template: corev1.PodTemplateSpec{
 				ObjectMeta: metav1.ObjectMeta{
-					Labels: data.Labels,
+					Labels: labels,
 				},
 				Spec: corev1.PodSpec{
 					Volumes:        nil,

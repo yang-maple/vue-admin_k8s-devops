@@ -156,13 +156,14 @@
         <el-form :model="form" label-width="15%">
           <el-form-item label="名称">
             <el-input v-model="form.namespace" autocomplete="off" style="width: 90%;" />
-            <div><span style="font-size: small;">长度为 1 ~ 63 个字符，只能包含数字、小写字母和中划线（-），且首尾只能是字母或数字</span></div>
+            <div><span :font-family="'Arial, sans-serif'" style="font-size: 12px;">长度为 1 ~ 63
+              个字符，只能包含数字、小写字母和中划线（-），且首尾只能是字母或数字</span></div>
           </el-form-item>
         </el-form>
         <template #footer>
           <span class="dialog-footer">
             <el-button type="primary" @click="handleCreate">确认创建</el-button>
-            <el-button type="danger">
+            <el-button type="danger" @click="adddialog = false">
               取消
             </el-button>
           </span>
@@ -204,7 +205,6 @@ export default {
   methods: {
     handleEdit(name) {
       this.editdialog = true
-      console.log(name)
       this.$store.dispatch('namespace/getNamespaceDeatil', name).then((res) => {
         this.content = yaml.dump(res.data.detail)
       })
@@ -282,22 +282,8 @@ export default {
         'name': name
       }
     },
-    messageboxOperate(row, name) {
-      this.$confirm(`是否${name}实例${row.name}`, '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        this.handleDelete(row)
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        })
-      })
-    },
     getNamespaces() {
-      this.$store.dispatch('namespace/getNamespace', this.serachInfo).then((res) => {
+      this.$store.dispatch('namespace/getNamespacelist', this.serachInfo).then((res) => {
         this.namespacesItem = res.data.item
         this.total = res.data.total
         for (let i = 0; i < res.data.item.length; i++) {
@@ -313,24 +299,11 @@ export default {
           type: 'success'
         })
         this.adddialog = false
+        this.form.namespace = ''
         setTimeout(() => {
           this.getNamespaces()
         }, 1000)
       })
-      // this.$ajax.post(
-      //   '/namespaces/create',
-      //   {
-      //     namespace_name: this.form.newnamespaces
-      //   }
-      // ).then((res) => {
-      //   this.$message({
-      //     message: res.msg,
-      //     type: 'success'
-      //   })
-      // }).catch((res) => {
-      //   console.log(res)
-      // })
-      // this.reload()
     },
     Refresh() {
       setTimeout(() => {
@@ -345,15 +318,6 @@ export default {
     handleCurrentChange(page) {
       this.serachInfo.page = page
       this.getNamespaces()
-    },
-    handle(row) {
-      this.$router.push({
-        path: '/namespaces/namespaces_detail',
-        name: 'namespaces详情',
-        query: {
-          namespace_name: row.name
-        }
-      })
     },
     showLabels(index) {
       if (this.maxitem[index] === 3) {

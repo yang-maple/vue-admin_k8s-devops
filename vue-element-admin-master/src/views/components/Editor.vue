@@ -14,7 +14,7 @@
           showPrintMargin: false, //去除编辑器里的竖线
         }"
         width="100%"
-        height="600px"
+        height="500px"
         @input="handleInput"
         @init="editorInit"
       />

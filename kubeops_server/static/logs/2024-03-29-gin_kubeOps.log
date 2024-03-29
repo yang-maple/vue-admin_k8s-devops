@@ -1,0 +1,113 @@
+2024-03-29 17:24:23 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/db/mysql.go:34] mysql initialization succeeded
+2024-03-29 17:24:24 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/utils/email.go:33] The mailbox connected was successful
+2024-03-29 17:24:24 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/db/redis.go:28] redis initialization succeededPONG
+2024-03-29 17:24:30 [INFO] [GIN] UserId =  | 200 |      3.5803ms |       127.0.0.1 | GET | /v1/api/user/getCaptcha |
+2024-03-29 17:24:43 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/service/login.go:37] User identity verification succeeded
+2024-03-29 17:24:43 [INFO] [GIN] UserId =  | 200 |         5.5ms |       127.0.0.1 | POST | /v1/api/user/login |
+2024-03-29 17:24:43 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/service/init.go:35] k8s initialization succeeded
+2024-03-29 17:24:43 [INFO] [GIN] UserId =  | 200 |      8.1978ms |       127.0.0.1 | GET | /v1/api/user/info?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcjAyIiwiZXhwIjoxNzExNzExNDgzLCJpc3MiOiJrdWJlX29wcyIsIm5iZiI6MTcxMTcwMzI4M30.fHgxymDuzj3X_eCdfGbJ_SiTNPfcw-PzwhzLXIGq_hE |
+2024-03-29 17:24:44 [INFO] [GIN] UserId =  | 404 |            0s |       127.0.0.1 | GET | /v1/api/vue-element-admin/transaction/list |
+2024-03-29 17:24:58 [INFO] [GIN] UserId =  | 200 |      3.3158ms |       127.0.0.1 | GET | /v1/api/user/getCaptcha |
+2024-03-29 17:25:07 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/service/login.go:37] User identity verification succeeded
+2024-03-29 17:25:07 [INFO] [GIN] UserId =  | 200 |      9.6315ms |       127.0.0.1 | POST | /v1/api/user/login |
+2024-03-29 17:25:07 [INFO] [GIN] UserId =  | 200 |      6.4709ms |       127.0.0.1 | GET | /v1/api/user/info?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcjAyIiwiZXhwIjoxNzExNzExNTA3LCJpc3MiOiJrdWJlX29wcyIsIm5iZiI6MTcxMTcwMzMwN30.U3Y87Ag-6Kgo_h0hwTvKCwlO9h4mIcFo5QKmWVGeUUg |
+2024-03-29 17:25:07 [INFO] [GIN] UserId =  | 404 |            0s |       127.0.0.1 | GET | /v1/api/vue-element-admin/transaction/list |
+2024-03-29 17:39:19 [INFO] [GIN] UserId =  | 200 |    132.0508ms |       127.0.0.1 | GET | /v1/api/node/list |
+2024-03-29 17:39:21 [INFO] [GIN] UserId =  | 200 |      9.4089ms |       127.0.0.1 | GET | /v1/api/namespaces/list?filter_name=&limit=10&page=1 |
+2024-03-29 18:16:46 [INFO] [GIN] UserId =  | 200 |     26.1963ms |       127.0.0.1 | GET | /v1/api/namespaces/list?filter_name=&limit=10&page=2 |
+2024-03-29 18:16:47 [INFO] [GIN] UserId =  | 200 |     11.1819ms |       127.0.0.1 | GET | /v1/api/namespaces/list?filter_name=&limit=10&page=1 |
+2024-03-29 18:23:15 [INFO] [GIN] UserId =  | 200 |     15.8015ms |       127.0.0.1 | GET | /v1/api/user/info?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcjAyIiwiZXhwIjoxNzExNzExNTA3LCJpc3MiOiJrdWJlX29wcyIsIm5iZiI6MTcxMTcwMzMwN30.U3Y87Ag-6Kgo_h0hwTvKCwlO9h4mIcFo5QKmWVGeUUg |
+2024-03-29 18:23:15 [INFO] [GIN] UserId =  | 200 |      26.573ms |       127.0.0.1 | GET | /v1/api/namespaces/list?filter_name=&limit=10&page=1 |
+2024-03-29 18:23:19 [INFO] [GIN] UserId =  | 200 |     11.2706ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:23:19 [INFO] [GIN] UserId =  | 200 |     32.0718ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:23:28 [INFO] [GIN] UserId =  | 200 |      7.8958ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:23:53 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/service/deployment.go:260] Create Deployments teast-a success
+2024-03-29 18:23:53 [INFO] [GIN] UserId =  | 200 |     15.9763ms |       127.0.0.1 | POST | /v1/api/deployment/create |
+2024-03-29 18:23:56 [INFO] [GIN] UserId =  | 200 |      6.9015ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:23:56 [INFO] [GIN] UserId =  | 200 |     26.4461ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:25:00 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/service/deployment.go:272] Delete Deployments teast-a success
+2024-03-29 18:25:00 [INFO] [GIN] UserId =  | 200 |     11.6914ms |       127.0.0.1 | DELETE | /v1/api/deployment/delete |
+2024-03-29 18:25:01 [INFO] [GIN] UserId =  | 200 |     28.5946ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:25:08 [INFO] [GIN] UserId =  | 200 |      14.374ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:25:22 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/service/deployment.go:260] Create Deployments test-bbb success
+2024-03-29 18:25:22 [INFO] [GIN] UserId =  | 200 |     12.9425ms |       127.0.0.1 | POST | /v1/api/deployment/create |
+2024-03-29 18:25:25 [INFO] [GIN] UserId =  | 200 |     20.9255ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:25:25 [INFO] [GIN] UserId =  | 200 |     11.8702ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:28:12 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/service/deployment.go:272] Delete Deployments test-bbb success
+2024-03-29 18:28:12 [INFO] [GIN] UserId =  | 200 |      26.272ms |       127.0.0.1 | DELETE | /v1/api/deployment/delete |
+2024-03-29 18:28:13 [INFO] [GIN] UserId =  | 200 |     21.6069ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:28:20 [INFO] [GIN] UserId =  | 200 |      6.6512ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:28:31 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/service/deployment.go:260] Create Deployments test-c success
+2024-03-29 18:28:31 [INFO] [GIN] UserId =  | 200 |     14.8993ms |       127.0.0.1 | POST | /v1/api/deployment/create |
+2024-03-29 18:28:34 [INFO] [GIN] UserId =  | 200 |     12.2244ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:28:34 [INFO] [GIN] UserId =  | 200 |     42.8117ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:33:42 [INFO] [GIN] UserId =  | 200 |     13.5348ms |       127.0.0.1 | GET | /v1/api/user/info?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcjAyIiwiZXhwIjoxNzExNzExNTA3LCJpc3MiOiJrdWJlX29wcyIsIm5iZiI6MTcxMTcwMzMwN30.U3Y87Ag-6Kgo_h0hwTvKCwlO9h4mIcFo5QKmWVGeUUg |
+2024-03-29 18:33:43 [INFO] [GIN] UserId =  | 200 |     34.0142ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:33:43 [INFO] [GIN] UserId =  | 200 |     39.7885ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:33:49 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/service/deployment.go:272] Delete Deployments test-c success
+2024-03-29 18:33:49 [INFO] [GIN] UserId =  | 200 |      9.1668ms |       127.0.0.1 | DELETE | /v1/api/deployment/delete |
+2024-03-29 18:33:50 [INFO] [GIN] UserId =  | 200 |      15.004ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:33:56 [INFO] [GIN] UserId =  | 200 |      9.4484ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:34:06 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/service/deployment.go:260] Create Deployments test-asd success
+2024-03-29 18:34:06 [INFO] [GIN] UserId =  | 200 |     20.1352ms |       127.0.0.1 | POST | /v1/api/deployment/create |
+2024-03-29 18:34:10 [INFO] [GIN] UserId =  | 200 |     30.9237ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:34:10 [INFO] [GIN] UserId =  | 200 |      9.8721ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:35:21 [INFO] [GIN] UserId =  | 200 |     33.0486ms |       127.0.0.1 | GET | /v1/api/user/info?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcjAyIiwiZXhwIjoxNzExNzExNTA3LCJpc3MiOiJrdWJlX29wcyIsIm5iZiI6MTcxMTcwMzMwN30.U3Y87Ag-6Kgo_h0hwTvKCwlO9h4mIcFo5QKmWVGeUUg |
+2024-03-29 18:35:22 [INFO] [GIN] UserId =  | 200 |     30.0427ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:35:22 [INFO] [GIN] UserId =  | 200 |     10.0514ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:35:35 [INFO] [GIN] UserId =  | 200 |     12.2499ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:35:45 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/service/deployment.go:260] Create Deployments test-b success
+2024-03-29 18:35:45 [INFO] [GIN] UserId =  | 200 |     12.9966ms |       127.0.0.1 | POST | /v1/api/deployment/create |
+2024-03-29 18:35:49 [INFO] [GIN] UserId =  | 200 |     10.1113ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:35:49 [INFO] [GIN] UserId =  | 200 |     26.2009ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:40:46 [INFO] [GIN] UserId =  | 200 |     18.6994ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:41:11 [INFO] [GIN] UserId =  | 200 |     17.8202ms |       127.0.0.1 | GET | /v1/api/user/info?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcjAyIiwiZXhwIjoxNzExNzExNTA3LCJpc3MiOiJrdWJlX29wcyIsIm5iZiI6MTcxMTcwMzMwN30.U3Y87Ag-6Kgo_h0hwTvKCwlO9h4mIcFo5QKmWVGeUUg |
+2024-03-29 18:41:20 [INFO] [GIN] UserId =  | 200 |      6.6602ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:41:28 [INFO] [D:/Tools/workspaces/vue-admin_k8s-devops/kubeops_server/service/deployment.go:260] Create Deployments test-qsd success
+2024-03-29 18:41:28 [INFO] [GIN] UserId =  | 200 |     11.7223ms |       127.0.0.1 | POST | /v1/api/deployment/create |
+2024-03-29 18:41:31 [INFO] [GIN] UserId =  | 200 |     40.0699ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:41:31 [INFO] [GIN] UserId =  | 200 |     42.6275ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:44:00 [INFO] [GIN] UserId =  | 200 |     45.4563ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:44:32 [INFO] [GIN] UserId =  | 200 |     18.7076ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:44:32 [INFO] [GIN] UserId =  | 200 |      6.7737ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:59:10 [INFO] [GIN] UserId =  | 200 |     53.9117ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:59:10 [INFO] [GIN] UserId =  | 200 |     12.2928ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:59:13 [INFO] [GIN] UserId =  | 200 |     14.9793ms |       127.0.0.1 | GET | /v1/api/user/info?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcjAyIiwiZXhwIjoxNzExNzExNTA3LCJpc3MiOiJrdWJlX29wcyIsIm5iZiI6MTcxMTcwMzMwN30.U3Y87Ag-6Kgo_h0hwTvKCwlO9h4mIcFo5QKmWVGeUUg |
+2024-03-29 18:59:14 [INFO] [GIN] UserId =  | 200 |     34.9398ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:59:14 [INFO] [GIN] UserId =  | 200 |     10.4012ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 18:59:23 [INFO] [GIN] UserId =  | 200 |      20.721ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 18:59:23 [INFO] [GIN] UserId =  | 200 |      8.5654ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 19:01:09 [INFO] [GIN] UserId =  | 200 |     45.8733ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 19:01:09 [INFO] [GIN] UserId =  | 200 |       7.506ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 19:01:11 [INFO] [GIN] UserId =  | 200 |      6.9299ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=ops&limit=10&page=1 |
+2024-03-29 19:01:13 [INFO] [GIN] UserId =  | 200 |      5.5073ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=aaaa&limit=10&page=1 |
+2024-03-29 19:01:16 [INFO] [GIN] UserId =  | 200 |     13.6176ms |       127.0.0.1 | GET | /v1/api/user/info?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcjAyIiwiZXhwIjoxNzExNzExNTA3LCJpc3MiOiJrdWJlX29wcyIsIm5iZiI6MTcxMTcwMzMwN30.U3Y87Ag-6Kgo_h0hwTvKCwlO9h4mIcFo5QKmWVGeUUg |
+2024-03-29 19:01:16 [INFO] [GIN] UserId =  | 200 |     19.7997ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 19:01:16 [INFO] [GIN] UserId =  | 200 |      9.9026ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 19:01:56 [INFO] [GIN] UserId =  | 200 |    143.1387ms |       127.0.0.1 | GET | /v1/api/node/list |
+2024-03-29 19:01:58 [INFO] [GIN] UserId =  | 200 |     23.7654ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 19:01:59 [INFO] [GIN] UserId =  | 200 |       7.088ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 19:05:05 [INFO] [GIN] UserId =  | 200 |     54.2187ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 19:05:06 [INFO] [GIN] UserId =  | 200 |      7.4259ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 19:05:08 [INFO] [GIN] UserId =  | 200 |      6.5266ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=test2&limit=10&page=1 |
+2024-03-29 19:05:10 [INFO] [GIN] UserId =  | 200 |      6.9051ms |       127.0.0.1 | GET | /v1/api/namespaces/list?filter_name=&limit=10&page=1 |
+2024-03-29 19:05:10 [INFO] [GIN] UserId =  | 200 |      7.2391ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=test2&limit=10&page=1 |
+2024-03-29 19:05:11 [INFO] [GIN] UserId =  | 200 |      7.2086ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 19:05:14 [INFO] [GIN] UserId =  | 200 |      14.684ms |       127.0.0.1 | GET | /v1/api/user/info?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoidXNlcjAyIiwiZXhwIjoxNzExNzExNTA3LCJpc3MiOiJrdWJlX29wcyIsIm5iZiI6MTcxMTcwMzMwN30.U3Y87Ag-6Kgo_h0hwTvKCwlO9h4mIcFo5QKmWVGeUUg |
+2024-03-29 19:05:14 [INFO] [GIN] UserId =  | 200 |     13.5727ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 19:05:14 [INFO] [GIN] UserId =  | 200 |     22.4119ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 19:05:44 [INFO] [GIN] UserId =  | 200 |     21.1813ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 19:05:48 [INFO] [GIN] UserId =  | 200 |     21.0653ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 19:05:56 [INFO] [GIN] UserId =  | 200 |      20.566ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=&limit=10&page=1 |
+2024-03-29 19:05:56 [INFO] [GIN] UserId =  | 200 |     32.4989ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 19:18:03 [INFO] [GIN] UserId =  | 200 |     18.6226ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=ops&limit=10&page=1 |
+2024-03-29 19:18:05 [INFO] [GIN] UserId =  | 200 |      5.4837ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=aaaa&limit=10&page=1 |
+2024-03-29 19:18:20 [INFO] [GIN] UserId =  | 200 |      5.3787ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=aaaa&limit=10&page=1 |
+2024-03-29 19:18:20 [INFO] [GIN] UserId =  | 200 |      6.0791ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 19:18:22 [INFO] [GIN] UserId =  | 200 |      4.7896ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=aaaa&limit=10&page=1 |
+2024-03-29 19:18:23 [INFO] [GIN] UserId =  | 200 |      7.5816ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 19:19:38 [INFO] [GIN] UserId =  | 200 |     10.0506ms |       127.0.0.1 | GET | /v1/api/namespaces/list?filter_name=&limit=10&page=1 |
+2024-03-29 19:19:39 [INFO] [GIN] UserId =  | 200 |      7.1947ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=aaaa&limit=10&page=1 |
+2024-03-29 19:19:39 [INFO] [GIN] UserId =  | 200 |      8.7146ms |       127.0.0.1 | GET | /v1/api/namespaces/list |
+2024-03-29 19:19:41 [INFO] [GIN] UserId =  | 200 |      4.0098ms |       127.0.0.1 | GET | /v1/api/deployment/list?filter_name=&namespace=aaaa&limit=10&page=1 |
+2024-03-29 19:19:41 [INFO] [GIN] UserId =  | 200 |      5.9273ms |       127.0.0.1 | GET | /v1/api/namespaces/list |

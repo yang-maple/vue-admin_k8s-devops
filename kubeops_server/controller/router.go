@@ -22,7 +22,7 @@ func (router *router) InitApiRouter(r *gin.Engine) {
 		podV1.GET("/container/log", Pod.GetContainerLog)
 		podV1.GET("/ns", Pod.GetPodNumber)
 	}
-	deployV1 := r.Group("/v1/api/deploy")
+	deployV1 := r.Group("/v1/api/deployment")
 	{
 		deployV1.GET("/list", Deployment.GetDeploylist)
 		deployV1.PUT("/modify", Deployment.ModifyDeployReplicas)

@@ -22,23 +22,15 @@
     </el-row>
     <div>
       <!--只需要双向绑定代码块即可-->
-      <el-tabs type="border-card">
-        <el-tab-pane label="用户管理">
-          <CodeEdit ref="editor" v-model="content" language="json" /></el-tab-pane>
-        <el-tab-pane label="配置管理">
-          <CodeEdit ref="editor" v-model="content" language="yaml" /></el-tab-pane>
-        <el-tab-pane label="角色管理">角色管理</el-tab-pane>
-        <el-tab-pane label="定时任务补偿">定时任务补偿</el-tab-pane>
-      </el-tabs>
-      <button @click="getCode">获取代码</button>
+      <ltable />
     </div>
   </div>
 </template>
 
 <script>
-import CodeEdit from '../components/Editor'
+import ltable from '../components/LabelTable'
 export default {
-  components: { CodeEdit },
+  components: { ltable },
   data() {
     return {
       content: '11111' // 代码块

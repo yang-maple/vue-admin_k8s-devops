@@ -4,10 +4,31 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c9e6155-8b5c-406b-970a-8620e29aa5b8" name="Changes" comment="&quot;err&#10;&quot;">
+    <list default="true" id="4fbc361f-131c-4c35-8188-d10a8dca2e78" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/controller/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kubeops.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/swagger-settings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/namespaces.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/namespaces.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/upload.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/deployment.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/deployment.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middle/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/middle/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/deployment.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/deployment.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/init.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/login.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/login.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/logs/gin_kubeOps.log" beforeDir="false" afterPath="$PROJECT_DIR$/static/logs/gin_kubeOps.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/public.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/public.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/api/namespace.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/api/namespace.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/store/modules/namespace.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/store/modules/namespace.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/utils/validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/utils/validate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/cluster-resources/namespace-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/cluster-resources/namespace-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/components/Editor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/components/Editor.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/login/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/daemonset-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/daemonset-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/deployment-list copy.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/deployment-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/deployment-list.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,32 +38,22 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
-        <option value="OpenAPI" />
         <option value="Go File" />
       </list>
     </option>
   </component>
-  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../golang" />
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../golang" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/static/logs/gin_kubeOps.log" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../../../golang/pkg/mod/github.com/gorilla/websocket@v1.5.0/conn.go" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/../../../../golang/pkg/mod/k8s.io/api@v0.27.0/core/v1/types.go" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/../../../../golang/pkg/mod/k8s.io/apimachinery@v0.27.0/pkg/api/resource/quantity.go" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2VNm1xbbt3sFJdXapZ0mJ5Sulrx" />
+  <component name="ProjectId" id="2e9yfYYJGEhP53NdBFz0vUy6bLh" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -50,37 +61,20 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.automatic.dependencies.download&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/code_project/vue-admin_k8s-devops/kubeops_server&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/xiy19425&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Tools\workspaces\k8sops\kubeops_server\static\configfile\1" />
-      <recent name="D:\Tools\workspaces\k8sops\kubeops_server\view" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Tools\workspaces\vue-admin_k8s-devops\kubeops_server\utils" />
-      <recent name="D:\Tools\workspaces\k8sops\kubeops_server\utils" />
-      <recent name="D:\Tools\workspaces\k8sops\kubeops_server\middle" />
-      <recent name="D:\Tools\workspaces\goproject\kubeops\controller" />
-    </key>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -92,10 +86,18 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
-  </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/controller/deployment.go</url>
+          <line>182</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

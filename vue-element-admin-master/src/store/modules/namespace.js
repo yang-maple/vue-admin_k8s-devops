@@ -1,9 +1,19 @@
-import { getNamespace, getNamespaceDeatil, createNamespace, deleteNamespace, updateNamespace } from '@/api/namespace'
+import { getNamespacelist, getNamespaceDeatil, createNamespace, deleteNamespace, updateNamespace } from '@/api/namespace'
+
+const state = {
+  namespace: ''
+}
+
+const mutations = {
+  SET_NAMESPACE: (state, data) => {
+    state.namespace = data
+  }
+}
 
 const actions = {
-  getNamespace({ commit }, data) {
+  getNamespacelist({ commit }, data) {
     return new Promise((resolve, reject) => {
-      getNamespace({ filter_name: data.filter_name, limit: data.limit, page: data.page }).then(res => {
+      getNamespacelist({ filter_name: data.filter_name, limit: data.limit, page: data.page }).then(res => {
         resolve(res)
       }).catch(error => {
         reject(error)
@@ -45,13 +55,15 @@ const actions = {
         reject(error)
       })
     })
+  },
+  setNamespce({ commit }, data) {
+    commit('SET_NAMESPACE', data)
   }
-
 }
 
 export default {
   namespaced: true,
-  // state,
-  // mutations,
+  state,
+  mutations,
   actions
 }

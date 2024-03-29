@@ -85,3 +85,8 @@ export function isArray(arg) {
   }
   return Array.isArray(arg)
 }
+
+export function validReplicas(Replica) {
+  const reg = /^([1-9]|[1-9][0-9]|0?[0-9])$/
+  return reg.test(Replica)
+}

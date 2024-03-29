@@ -63,6 +63,16 @@ func (l *login) GetUserInfo(token string) (info *UserInfo, err error) {
 		utils.Logger.Error("GetUserCluster failed :" + err.Error())
 		return nil, err
 	}
+	// 如果客户端已存在则不初始化
+	if K8s.ConfigDir[claim.Id] != nil {
+		return &UserInfo{
+			Id:          int(userinfo.Id),
+			UserName:    userinfo.Username,
+			Avatar:      userinfo.Avatar,
+			Roles:       []model.UserRole{userinfo.Roles},
+			ClusterName: cname,
+		}, nil
+	}
 	//如果存在集群则初始化
 	if cname != "" {
 		//存入集群信息

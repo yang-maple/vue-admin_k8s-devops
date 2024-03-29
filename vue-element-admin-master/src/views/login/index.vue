@@ -187,9 +187,6 @@ export default {
       } else {
         this.passwordType = 'password'
       }
-      this.$nextTick(() => {
-        this.$refs.password.focus()
-      })
     },
     handleLogin() {
       this.$refs.loginForm.validate(valid => {

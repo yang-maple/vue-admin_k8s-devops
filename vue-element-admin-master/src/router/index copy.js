@@ -162,16 +162,17 @@ export const constantRoutes = [
         name: 'Deployment',
         meta: {
           title: '无状态副本'
-        }
-      },
-      {
-        path: 'create',
-        component: () => import('@/views/workloads/deployment-add.vue'),
-        name: 'Create',
-        meta: {
-          title: '创建'
         },
-        hidden: true
+        children: [
+          {
+            path: 'create',
+            component: () => import('@/views/workloads/deployment-add.vue'),
+            name: 'DeploymentCreate',
+            meta: {
+              title: '创建无状态副本'
+            }
+          }
+        ]
       },
       {
         path: 'statefulset',

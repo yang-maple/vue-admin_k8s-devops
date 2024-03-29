@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export function getNamespace(data) {
+export function getNamespacelist(data) {
   return request({
     url: '/namespaces/list',
     method: 'get',
