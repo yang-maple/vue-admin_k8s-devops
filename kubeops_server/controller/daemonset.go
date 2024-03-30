@@ -5,7 +5,6 @@ import (
 	appsv1 "k8s.io/api/apps/v1"
 	"kubeops/service"
 	"net/http"
-	"strconv"
 )
 
 var DaemonSet daemonSet
@@ -23,10 +22,10 @@ func (d *daemonSet) GetDaemonList(c *gin.Context) {
 		Page       int    `form:"page"`
 	})
 	_ = c.ShouldBind(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	data, err := service.DaemonSet.GetDsList(params.FilterName, params.Namespace, params.Limit, params.Page, uuid)
+	data, err := service.DaemonSet.GetDsList(params.FilterName, params.Namespace, params.Limit, params.Page, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "获取守护进程列表失败",
 			"data": nil,
 		})
@@ -34,6 +33,7 @@ func (d *daemonSet) GetDaemonList(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
+		"code": 2000,
 		"msg":  "获取守护进程列表成功",
 		"data": data,
 	})
@@ -47,15 +47,16 @@ func (d *daemonSet) GetDaemonDetail(c *gin.Context) {
 	})
 
 	_ = c.ShouldBind(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	Ds, err := service.DaemonSet.GetDsDetail(params.Namespace, params.DaemonName, uuid)
+	Ds, err := service.DaemonSet.GetDsDetail(params.Namespace, params.DaemonName, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"err": "守护进程 " + params.DaemonName + " 获取数据失败",
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
+			"err":  "守护进程 " + params.DaemonName + " 获取数据失败",
 		})
 		return
 	} else {
 		c.JSON(http.StatusOK, gin.H{
+			"code": 2000,
 			"msg":  "守护进程 " + params.DaemonName + " 获取数据成功",
 			"data": Ds,
 		})
@@ -65,20 +66,21 @@ func (d *daemonSet) GetDaemonDetail(c *gin.Context) {
 // DelDaemon 删除 实例
 func (d *daemonSet) DelDaemon(c *gin.Context) {
 	params := new(struct {
-		DaemonName string `form:"daemon_name"`
-		Namespace  string `form:"namespace"`
+		DaemonName string `json:"daemon_name"`
+		Namespace  string `json:"namespace"`
 	})
-	_ = c.ShouldBind(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.DaemonSet.DelDs(params.Namespace, params.DaemonName, uuid)
+	_ = c.ShouldBindJSON(&params)
+	err := service.DaemonSet.DelDs(params.Namespace, params.DaemonName, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"msg": "守护进程 " + params.DaemonName + " 删除失败:" + err.Error(),
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
+			"msg":  "守护进程 " + params.DaemonName + " 删除失败:" + err.Error(),
 		})
 		return
 	} else {
 		c.JSON(http.StatusOK, gin.H{
-			"msg": "守护进程 " + params.DaemonName + " 删除成功",
+			"code": 2000,
+			"msg":  "守护进程 " + params.DaemonName + " 删除成功",
 		})
 	}
 
@@ -91,15 +93,16 @@ func (d *daemonSet) UpdateDaemon(c *gin.Context) {
 		Data      *appsv1.DaemonSet `json:"data"`
 	})
 	_ = c.ShouldBindJSON(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.DaemonSet.UpdateDs(params.Namespace, params.Data, uuid)
+	err := service.DaemonSet.UpdateDs(params.Namespace, params.Data, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"msg": "守护进程 " + params.Data.Name + " 更新失败" + err.Error(),
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
+			"msg":  "守护进程 " + params.Data.Name + " 更新失败" + err.Error(),
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"msg": "守护进程 " + params.Data.Name + " 更新成功",
+		"code": 2000,
+		"msg":  "守护进程 " + params.Data.Name + " 更新成功",
 	})
 }

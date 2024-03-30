@@ -205,8 +205,6 @@ export default {
       maxitem: [],
       detailnamespace: null,
       editdialog: false,
-      dialogFormVisible: false,
-      dialogcreatens: false,
       deploymentItem: [],
       content: '',
       nslist: [],
@@ -329,11 +327,6 @@ export default {
         this.detailnamespace = namespace
         this.content = yaml.dump(res.data)
       })
-      // }).then((res) => {
-      //   this.activeName = 'json'
-      //   this.aceConfig.lang = "json"
-      //   this.detailnamespace = res.data.metadata.namespace
-      //   this.content = JSON.stringify(res.data, null, 2)
     },
     handleReplica(namespace, name, replicas) {
       this.$store.dispatch('deployment/modifyDeployment', {

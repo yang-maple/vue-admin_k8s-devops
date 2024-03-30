@@ -139,7 +139,7 @@ func (d *deployment) DelDeploy(c *gin.Context) {
 		DeployName string `json:"deploy_name"`
 		Namespace  string `json:"namespace"`
 	})
-	_ = c.ShouldBind(&params)
+	_ = c.ShouldBindJSON(&params)
 	err := service.Deployment.DelDeploy(params.Namespace, params.DeployName, *DeliverUid(c))
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{

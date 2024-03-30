@@ -5,30 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fbc361f-131c-4c35-8188-d10a8dca2e78" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/jwt.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kubeops.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/swagger-settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kubeops_server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kubeops_server.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/daemonset.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/daemonset.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/deployment.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/deployment.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middle/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/middle/jwt.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/deployment.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/deployment.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/init.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/login.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/login.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/pod.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/pod.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/statefulset.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/statefulset.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/logs/gin_kubeOps.log" beforeDir="false" afterPath="$PROJECT_DIR$/static/logs/gin_kubeOps.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/public.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/public.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/api/namespace.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/api/namespace.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/store/modules/namespace.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/store/modules/namespace.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/utils/validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/utils/validate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/cluster-resources/namespace-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/cluster-resources/namespace-list.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/components/Editor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/components/Editor.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/login/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/daemonset-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/daemonset-list.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/deployment-list copy.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/deployment-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/deployment-list.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
