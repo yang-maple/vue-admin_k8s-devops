@@ -37,7 +37,7 @@
                 <use xlink:href="#icon-jisuanjiedian" />
               </svg></el-col>
               <el-col :span="20">
-                <span style="margin-left: 5px" size="small" tag="b">{{
+                <span style="margin-left: 5px;font-size: 14px;font-weight: bold;">{{
                   scope.row.name
                 }}</span>
                 <div style="margin-top: -5px;">
@@ -54,7 +54,7 @@
             <div v-for="(v, k, index) in scope.row.labels" :key="k">
               <div v-if="index < maxitem[scope.$index]">
                 <el-tag
-                  v-if="v.replace(/[^\w\s]/g, '').length + k.replace(/[^\w\s]/g, '').length <= 55"
+
                   type="info"
                   style="margin-left: 5px;"
                   size="small"
@@ -63,14 +63,14 @@
                 >
                   {{ k }}:{{ v }}
                 </el-tag>
-                <el-tooltip v-else effect="light" placement="top">
+                <!-- <el-tooltip v-else effect="light" placement="top">
                   <el-tag type="info" style="margin-left: 5px;" size="small" effect="plain" round>
                     {{ k }}:{{ v }}
                   </el-tag>
                   <template #content>
                     {{ k }}:{{ v }}
                   </template>
-                </el-tooltip>
+                </el-tooltip> -->
               </div>
             </div>
             <div v-if="scope.row.labels == null">---</div>

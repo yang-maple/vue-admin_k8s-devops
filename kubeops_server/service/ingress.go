@@ -123,10 +123,20 @@ func (i *ingress) GetIngDetail(Namespace, ingName string, uuid int) (detail *net
 
 // CreateIng 创建 ingress 资源
 func (i *ingress) CreateIng(data *CreateIngress, uuid int) (err error) {
+	//默认添加app标签
+	labels := map[string]string{
+		"app": data.Name,
+	}
+	//如果用户自定义了标签，则添加标签
+	if data.Labels != nil {
+		for k, v := range data.Labels {
+			labels[k] = v
+		}
+	}
 	createIng := &networkv1.Ingress{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:   data.Name,
-			Labels: data.Labels,
+			Labels: labels,
 		},
 		Spec: networkv1.IngressSpec{
 			IngressClassName: &data.IngressClassName,

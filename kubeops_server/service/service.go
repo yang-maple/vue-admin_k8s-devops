@@ -133,13 +133,25 @@ func (s *service) GetSvcDetail(Namespace, svcName string, uuid int) (*svcDetail,
 
 // CreateSvc 创建 services
 func (s *service) CreateSvc(data *CreateService, uuid int) (err error) {
+
+	//默认添加app标签
+	labels := map[string]string{
+		"app": data.Name,
+	}
+	//如果用户自定义了标签，则添加标签
+	if data.Labels != nil {
+		for k, v := range data.Labels {
+			labels[k] = v
+		}
+	}
+
 	createSvc := &corev1.Service{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:   data.Name,
-			Labels: data.Labels,
+			Labels: labels,
 		},
 		Spec: corev1.ServiceSpec{
-			Selector: data.Labels,
+			Selector: labels,
 			Type:     "",
 		},
 		Status: corev1.ServiceStatus{},

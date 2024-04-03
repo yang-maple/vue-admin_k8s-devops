@@ -108,10 +108,20 @@ func (c *configmap) GetCmDetail(Namespace, configName string, uuid int) (detail 
 
 // CreateCm 创建
 func (c *configmap) CreateCm(data *CreateConfig, uuid int) (err error) {
+	//默认添加app标签
+	labels := map[string]string{
+		"app": data.Name,
+	}
+	//如果用户自定义了标签，则添加标签
+	if data.Labels != nil {
+		for k, v := range data.Labels {
+			labels[k] = v
+		}
+	}
 	config := &corev1.ConfigMap{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:   data.Name,
-			Labels: data.Labels,
+			Labels: labels,
 		},
 		Immutable: &data.Modify,
 		Data:      data.Data,

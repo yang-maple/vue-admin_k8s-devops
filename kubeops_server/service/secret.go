@@ -21,6 +21,7 @@ type secretInfo struct {
 	Labels    map[string]string `json:"labels"`
 	Immutable *bool             `json:"immutable"`
 	Type      corev1.SecretType `json:"type"`
+	CountData int               `json:"count_data"`
 	Age       string            `json:"age"`
 }
 
@@ -93,6 +94,7 @@ func (s *secret) GetSecretList(secretName, Namespace string, Limit, Page int, uu
 			Labels:    v.Labels,
 			Immutable: v.Immutable,
 			Type:      v.Type,
+			CountData: len(v.Data),
 			Age:       v.CreationTimestamp.Time.Format("2006-01-02 15:04:05"),
 		})
 	}
@@ -169,7 +171,10 @@ func (s *secret) CreateSecret(data *CreateSecret, uuid int) (err error) {
 		}
 
 	}
-
+	// labels 赋值
+	if data.Labels != nil {
+		newsecret.Labels = data.Labels
+	}
 	_, err = K8s.Clientset[uuid].CoreV1().Secrets(data.Namespace).Create(context.TODO(), newsecret, metav1.CreateOptions{})
 	if err != nil {
 		utils.Logger.Error("Failed to Create the Secrets " + data.Name + " ,reason: " + err.Error())

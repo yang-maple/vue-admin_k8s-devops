@@ -11,9 +11,7 @@ type node struct{}
 var Node node
 
 func (n *node) GetNodeList(c *gin.Context) {
-	id, _ := c.Get("claims_id")
-	uuid, _ := id.(int)
-	data, err := service.Node.GetNodeList(uuid)
+	data, err := service.Node.GetNodeList(*DeliverUid(c))
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"msg":  err.Error(),
@@ -34,9 +32,7 @@ func (n *node) GetNodeDetail(c *gin.Context) {
 		NodeName string `form:"node_name"`
 	})
 	_ = c.ShouldBind(&params)
-	id, _ := c.Get("claims_id")
-	uuid, _ := id.(int)
-	data, err := service.Node.GetNodeDetail(params.NodeName, uuid)
+	data, err := service.Node.GetNodeDetail(params.NodeName, *DeliverUid(c))
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"msg":  "获取节点 " + params.NodeName + " 数据失败",
@@ -58,9 +54,7 @@ func (n *node) SetNodeSchedule(c *gin.Context) {
 		Status   bool   `json:"status"`
 	})
 	_ = c.ShouldBindJSON(&params)
-	id, _ := c.Get("claims_id")
-	uuid, _ := id.(int)
-	err := service.Node.SetNodeSchedule(params.NodeName, params.Status, uuid)
+	err := service.Node.SetNodeSchedule(params.NodeName, params.Status, *DeliverUid(c))
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"code": 4000,

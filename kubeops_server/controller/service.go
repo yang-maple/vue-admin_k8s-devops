@@ -1,11 +1,11 @@
 package controller
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	corev1 "k8s.io/api/core/v1"
 	"kubeops/service"
 	"net/http"
-	"strconv"
 )
 
 type services struct{}
@@ -21,16 +21,17 @@ func (s *services) GetServiceList(c *gin.Context) {
 		Page       int    `form:"page"`
 	})
 	_ = c.ShouldBind(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	data, err := service.Services.GetSvcList(params.FilterName, params.Namespace, params.Limit, params.Page, uuid)
+	data, err := service.Services.GetSvcList(params.FilterName, params.Namespace, params.Limit, params.Page, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"msg": "获取服务列表失败",
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
+			"msg":  "获取服务列表失败",
 		})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
+		"code": 2000,
 		"msg":  "获取服务列表成功",
 		"data": data,
 	})
@@ -43,10 +44,10 @@ func (s *services) GetServiceDetail(c *gin.Context) {
 		Namespace   string `form:"namespace"`
 	})
 	_ = c.ShouldBind(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	detail, err := service.Services.GetSvcDetail(params.Namespace, params.ServiceName, uuid)
+	detail, err := service.Services.GetSvcDetail(params.Namespace, params.ServiceName, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "服务 " + params.ServiceName + " 获取数据失败",
 			"data": nil,
 		})
@@ -54,6 +55,7 @@ func (s *services) GetServiceDetail(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
+		"code": 2000,
 		"msg":  "服务 " + params.ServiceName + " 获取数据成功",
 		"data": detail,
 	})
@@ -62,21 +64,22 @@ func (s *services) GetServiceDetail(c *gin.Context) {
 // DelServices  删除 services 资源
 func (s *services) DelServices(c *gin.Context) {
 	params := new(struct {
-		ServiceName string `form:"service_name"`
-		Namespace   string `form:"namespace"`
+		ServiceName string `json:"service_name"`
+		Namespace   string `json:"namespace"`
 	})
-	_ = c.ShouldBind(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.Services.DelSvc(params.Namespace, params.ServiceName, uuid)
+	_ = c.ShouldBindJSON(&params)
+	err := service.Services.DelSvc(params.Namespace, params.ServiceName, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"msg": "服务 " + params.ServiceName + " 删除失败" + err.Error(),
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
+			"msg":  "服务 " + params.ServiceName + " 删除失败" + err.Error(),
 		})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"msg": "服务 " + params.ServiceName + " 删除成功",
+		"code": 2000,
+		"msg":  "服务 " + params.ServiceName + " 删除成功",
 	})
 }
 
@@ -86,17 +89,18 @@ func (s *services) CreateService(c *gin.Context) {
 		Data *service.CreateService `json:"data"`
 	})
 	_ = c.ShouldBindJSON(&createSvc)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.Services.CreateSvc(createSvc.Data, uuid)
+	err := service.Services.CreateSvc(createSvc.Data, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"msg": "服务 " + createSvc.Data.Name + " 创建失败：" + err.Error(),
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
+			"msg":  "服务 " + createSvc.Data.Name + " 创建失败：" + err.Error(),
 		})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"msg": "服务 " + createSvc.Data.Name + " 创建成功",
+		"code": 2000,
+		"msg":  "服务 " + createSvc.Data.Name + " 创建成功",
 	})
 }
 
@@ -108,15 +112,17 @@ func (s *services) UpdateService(c *gin.Context) {
 		Data      *corev1.Service `json:"data"`
 	})
 	_ = c.ShouldBindJSON(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.Services.UpdateSvc(params.Namespace, params.Data, uuid)
+	fmt.Println(params.Namespace)
+	err := service.Services.UpdateSvc(params.Namespace, params.Data, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"msg": "服务 " + params.Data.Name + " 更新失败：" + err.Error(),
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
+			"msg":  "服务 " + params.Data.Name + " 更新失败：" + err.Error(),
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"msg": "服务 " + params.Data.Name + " 更新成功",
+		"code": 2000,
+		"msg":  "服务 " + params.Data.Name + " 更新成功",
 	})
 }

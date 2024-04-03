@@ -1,11 +1,11 @@
 <template>
   <div>
     <div style="padding:20px;font-size: 24px;">
-      <el-page-header title="返回" content="创建无状态副本" @back="goBack" />
+      <el-page-header title="返回" content="创建服务资源" @back="goBack" />
     </div>
     <div v-if="succeed" class="form-create">
       <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px" label-position="right" size="small">
-        <el-form-item label="名称" prop="name">
+        <el-form-item label="服务名称" prop="name">
           <el-input v-model="ruleForm.name" />
         </el-form-item>
         <el-form-item label="命名空间" prop="namespace">
@@ -22,40 +22,32 @@
             <el-option v-for="(item,index) in options" :key="index" :label="item.label" :value="item.namespace" />
           </el-select>
         </el-form-item>
-        <el-form-item label="标签" prop="labels">
+        <el-form-item label="服务标签" prop="labels">
           <ltable ref="lable" />
         </el-form-item>
-        <el-form-item label="副本" prop="replicas">
-          <el-input v-model.number="ruleForm.replicas" />
-        </el-form-item>
-        <el-form-item label="容器名称" prop="container.container_name">
-          <el-input v-model="ruleForm.container.container_name" />
-        </el-form-item>
-        <el-form-item label="镜像" prop="container.image">
-          <el-input v-model="ruleForm.container.image" />
+        <el-form-item label="服务类型" prop="type">
+          <el-select v-model="ruleForm.type" placeholder="请选择服务类型" class="add-select">
+            <el-option v-for="item in typelist" :key="item.value" :label="item.label" :value="item.value" />
+          </el-select>
         </el-form-item>
         <el-form-item label="端口名称" prop="container.container_port.port_name">
-          <el-input v-model="ruleForm.container.container_port.port_name" />
+          <el-input v-model="ruleForm.service_ports.port_name" />
         </el-form-item>
-        <el-form-item label="端口" prop="container.container_port.container_port">
-          <el-input v-model.number="ruleForm.container.container_port.container_port" />
+        <el-form-item label="容器端口" prop="service_ports.port">
+          <el-input v-model.number="ruleForm.service_ports.port" />
         </el-form-item>
-        <el-form-item label="协议" prop="container.container_port.protocol">
-          <el-radio-group v-model="ruleForm.container.container_port.protocol">
+        <el-form-item label="访问协议" prop="service_ports.protocol">
+          <el-radio-group v-model="ruleForm.service_ports.protocol">
             <el-radio label="TCP" />
             <el-radio label="UDP" />
           </el-radio-group>
         </el-form-item>
 
-        <el-form-item label="健康检查" prop="delivery">
-          <el-switch v-model="ruleForm.health_check" />
+        <el-form-item label="暴露端口" prop="service_ports.target_port">
+          <el-input v-model.number="ruleForm.service_ports.target_port" />
         </el-form-item>
-        <el-form-item
-          v-show="ruleForm.health_check == true"
-          label="路径"
-          :prop="ruleForm.health_check ? 'health_path' : 'nocheck'"
-        >
-          <el-input v-model="ruleForm.health_path" />
+        <el-form-item v-show="ruleForm.type == 'NodePort'" label="访问端口" prop="service_ports.node_port">
+          <el-input v-model.number="ruleForm.service_ports.node_port" />
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
@@ -90,58 +82,58 @@ export default {
       text: '',
       timer: null,
       duration: 2,
-      ruleForm: {
-        name: '',
-        namespace: '',
-        replicas: null,
-        labels: '',
-        container:
+      typelist: [
         {
-          container_name: '',
-          image: '',
-          cpu: '0m',
-          memory: '0Mi',
-          container_port:
-          {
-            port_name: '',
-            container_port: null,
-            protocol: ''
-          }
+          value: 'ClusterIP',
+          label: 'ClusterIP'
         },
-        value: '',
-        health_check: false,
-        health_path: ''
+        {
+          value: 'NodePort',
+          label: 'NodePort'
+        },
+        {
+          value: 'LoadBalancer',
+          label: 'LoadBalancer'
+        }
+      ],
+      ruleForm: {
+        name: null,
+        namespace: null,
+        labels: null,
+        type: null,
+        service_ports: {
+          port_name: null,
+          port: null,
+          protocol: null,
+          target_port: null,
+          node_port: null
+        }
       },
-      options: [],
       rules: {
         name: [
-          { required: true, message: '请输入资源名称', trigger: 'blur' }
+          { required: true, message: '请输入资源名称', trigger: 'change' }
         ],
         namespace: [
           { required: true, message: '请选择命名空间', trigger: 'change' }
         ],
-        replicas: [
-          { required: true, message: '请输入副本数量', trigger: 'change' },
-          { type: 'number', min: 0, max: 99, message: '副本数范围为0-99', trigger: 'change' }
+        resource: [
+          { message: '请选择一种协议', trigger: 'change' }
         ],
-        'container.container_name': [
-          { required: true, message: '请输入容器名称', trigger: 'blur' }
+        type: [
+          { required: true, message: '请选择一种服务类型', trigger: 'change' }
         ],
-        'container.image': [
-          { required: true, message: '请输入镜像名称', trigger: 'blur' }
+        'service_ports.port': [
+          { required: true, message: '请输入容器端口', trigger: 'blur' },
+          { type: 'number', message: '必须为数字值', trigger: 'blur' }
         ],
-        'container.container_port.container_port': [
-          { required: true, message: '请输入端口', trigger: 'change' },
-          { type: 'number', min: 1, max: 65535, message: '端口范围为1-65535', trigger: 'change' }
+        'service_ports.target_port': [
+          { type: 'number', message: '必须为数字值', trigger: 'blur' }
         ],
-        'container.container_port.protocol': [
-          { required: true, message: '请选择一种协议', trigger: 'change' }
-        ],
-        health_path: [
-          { required: true, message: '请输入健康检查路径', trigger: 'blur' }
-        ],
-        nocheck: []
-      }
+        'service_ports.node_port': [
+          { type: 'number', min: 30000, max: 32767, message: '必须为数字值，范围为 30000-32767', trigger: 'blur' }
+        ]
+      },
+      options: []
     }
   },
   unmounted() {
@@ -150,7 +142,7 @@ export default {
   methods: {
     goBack() {
       this.$router.push({
-        path: '/workload/deployment'
+        path: '/loadbalancing/service'
       })
     },
     submitForm(formName) {
@@ -169,7 +161,7 @@ export default {
       })
     },
     create() {
-      this.$store.dispatch('deployment/createDeployment', this.ruleForm).then((res) => {
+      this.$store.dispatch('service/createService', this.ruleForm).then((res) => {
         this.succeed = false
         this.text = `3秒后自动返回`
         this.timer = setInterval(() => {
@@ -202,7 +194,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+ @import "~@/styles/anticon.scss";
 .form-create{
   width: 600px;
 }

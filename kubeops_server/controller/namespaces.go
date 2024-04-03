@@ -18,9 +18,8 @@ func (n *namespace) GetNsList(c *gin.Context) {
 		Page       int    `form:"page"`
 	})
 	_ = c.ShouldBind(&params)
-	id, _ := c.Get("claims_id")
-	uuid, _ := id.(int)
-	data, err := service.Namespace.GetNsList(params.FilterName, params.Limit, params.Page, uuid)
+
+	data, err := service.Namespace.GetNsList(params.FilterName, params.Limit, params.Page, *DeliverUid(c))
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"code": 4000,
@@ -41,9 +40,7 @@ func (n *namespace) GetNsDetail(c *gin.Context) {
 		NamespaceName string `form:"namespace_name"`
 	})
 	_ = c.ShouldBind(&params)
-	id, _ := c.Get("claims_id")
-	uuid, _ := id.(int)
-	data, err := service.Namespace.GetNsDetail(params.NamespaceName, uuid)
+	data, err := service.Namespace.GetNsDetail(params.NamespaceName, *DeliverUid(c))
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"code": 4000,
@@ -64,9 +61,7 @@ func (n *namespace) DelNs(c *gin.Context) {
 		NamespaceName string `json:"namespace_name"`
 	})
 	_ = c.ShouldBind(&params)
-	id, _ := c.Get("claims_id")
-	uuid, _ := id.(int)
-	err := service.Namespace.DelNs(params.NamespaceName, uuid)
+	err := service.Namespace.DelNs(params.NamespaceName, *DeliverUid(c))
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"code": 4000,
@@ -86,9 +81,7 @@ func (n *namespace) CreateNs(c *gin.Context) {
 		NamespaceName string `json:"namespace_name"`
 	})
 	_ = c.ShouldBindJSON(&params)
-	id, _ := c.Get("claims_id")
-	uuid, _ := id.(int)
-	err := service.Namespace.CreateNs(params.NamespaceName, uuid)
+	err := service.Namespace.CreateNs(params.NamespaceName, *DeliverUid(c))
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"code": 4000,
@@ -107,9 +100,7 @@ func (n *namespace) UpdateNs(c *gin.Context) {
 		Data *corev1.Namespace `json:"data"`
 	})
 	_ = c.ShouldBindJSON(&params)
-	id, _ := c.Get("claims_id")
-	uuid, _ := id.(int)
-	err := service.Namespace.UpdateNs(params.Data, uuid)
+	err := service.Namespace.UpdateNs(params.Data, *DeliverUid(c))
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"code": 4000,

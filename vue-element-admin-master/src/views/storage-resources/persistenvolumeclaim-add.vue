@@ -1,67 +1,71 @@
 <template>
   <div>
     <div style="padding:20px;font-size: 24px;">
-      <el-page-header title="返回" content="创建无状态副本" @back="goBack" />
+      <el-page-header title="返回" content="创建持久卷声明" @back="goBack" />
     </div>
     <div v-if="succeed" class="form-create">
       <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px" label-position="right" size="small">
-        <el-form-item label="名称" prop="name">
+        <el-form-item label="资源名称" prop="name">
           <el-input v-model="ruleForm.name" />
         </el-form-item>
         <el-form-item label="命名空间" prop="namespace">
           <el-select
             v-model="ruleForm.namespace"
             remote
-            class="add-select"
             popper-append-to-body
             :remote-method="remoteMethod"
             :loading="loading"
+            class="add-select"
             placeholder="请选择命名空间"
             @focus="remoteMethod('')"
           >
             <el-option v-for="(item,index) in options" :key="index" :label="item.label" :value="item.namespace" />
           </el-select>
         </el-form-item>
-        <el-form-item label="标签" prop="labels">
+        <el-form-item label="资源标签" prop="labels">
           <ltable ref="lable" />
         </el-form-item>
-        <el-form-item label="副本" prop="replicas">
-          <el-input v-model.number="ruleForm.replicas" />
+        <el-form-item label="访问模式" prop="access_modes">
+          <el-checkbox-group v-model="ruleForm.access_modes" style="width: 150%;">
+            <el-checkbox label="ReadWriteOnce" name="access_modes" />
+            <el-checkbox label="ReadOnlyMany" name="access_modes" />
+            <el-checkbox label="ReadWriteMany" name="access_modes" />
+            <el-checkbox label="ReadWriteOncePod" name="access_modes" />
+          </el-checkbox-group>
         </el-form-item>
-        <el-form-item label="容器名称" prop="container.container_name">
-          <el-input v-model="ruleForm.container.container_name" />
+        <el-form-item label="存储容量" prop="storages">
+          <div>
+            <el-input v-model="ruleForm.storages" placeholder="" class="add-select">
+              <template slot="append">
+                <el-select v-model="storage_type" style="width: 100px">
+                  <el-option label="Gi" value="Gi" />
+                  <el-option label="Mi" value="Mi" />
+                </el-select>
+              </template>
+            </el-input>
+          </div>
         </el-form-item>
-        <el-form-item label="镜像" prop="container.image">
-          <el-input v-model="ruleForm.container.image" />
-        </el-form-item>
-        <el-form-item label="端口名称" prop="container.container_port.port_name">
-          <el-input v-model="ruleForm.container.container_port.port_name" />
-        </el-form-item>
-        <el-form-item label="端口" prop="container.container_port.container_port">
-          <el-input v-model.number="ruleForm.container.container_port.container_port" />
-        </el-form-item>
-        <el-form-item label="协议" prop="container.container_port.protocol">
-          <el-radio-group v-model="ruleForm.container.container_port.protocol">
-            <el-radio label="TCP" />
-            <el-radio label="UDP" />
-          </el-radio-group>
-        </el-form-item>
-
-        <el-form-item label="健康检查" prop="delivery">
-          <el-switch v-model="ruleForm.health_check" />
-        </el-form-item>
-        <el-form-item
-          v-show="ruleForm.health_check == true"
-          label="路径"
-          :prop="ruleForm.health_check ? 'health_path' : 'nocheck'"
-        >
-          <el-input v-model="ruleForm.health_path" />
+        <el-form-item label="存储类型">
+          <el-select
+            v-model="ruleForm.storage_classname"
+            remote
+            popper-append-to-body
+            :remote-method="remoteClass"
+            :loading="loading"
+            allow-create
+            filterable
+            placeholder=" "
+            class="add-select"
+            @focus="remoteClass('')"
+          >
+            <el-option v-for="item in storageclasslist" :key="item.value" :label="item.label" :value="item.value" />
+          </el-select>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
           <el-button @click="resetForm('ruleForm')">立即重置</el-button>
-          <el-button type="danger" @click="goBack">
-            立即返回
+          <el-button type="danger" @click="dialogcreatens = false, resetForm('ruleForm')">
+            取消
           </el-button>
         </el-form-item>
       </el-form>
@@ -90,29 +94,18 @@ export default {
       text: '',
       timer: null,
       duration: 2,
+      storage_type: 'Gi',
       ruleForm: {
-        name: '',
+        name: null,
         namespace: '',
-        replicas: null,
-        labels: '',
-        container:
-        {
-          container_name: '',
-          image: '',
-          cpu: '0m',
-          memory: '0Mi',
-          container_port:
-          {
-            port_name: '',
-            container_port: null,
-            protocol: ''
-          }
-        },
-        value: '',
-        health_check: false,
-        health_path: ''
+        access_modes: [],
+        labels: null,
+        storage: null,
+        storages: null,
+        storage_classname: null
       },
       options: [],
+      storageclasslist: [],
       rules: {
         name: [
           { required: true, message: '请输入资源名称', trigger: 'blur' }
@@ -120,27 +113,15 @@ export default {
         namespace: [
           { required: true, message: '请选择命名空间', trigger: 'change' }
         ],
-        replicas: [
-          { required: true, message: '请输入副本数量', trigger: 'change' },
-          { type: 'number', min: 0, max: 99, message: '副本数范围为0-99', trigger: 'change' }
+        access_modes: [
+          { required: true, message: '请选择访问模式', trigger: 'change' }
         ],
-        'container.container_name': [
-          { required: true, message: '请输入容器名称', trigger: 'blur' }
+        storages: [
+          { required: true, message: '请输入存储容量', trigger: 'change' }
         ],
-        'container.image': [
-          { required: true, message: '请输入镜像名称', trigger: 'blur' }
-        ],
-        'container.container_port.container_port': [
-          { required: true, message: '请输入端口', trigger: 'change' },
-          { type: 'number', min: 1, max: 65535, message: '端口范围为1-65535', trigger: 'change' }
-        ],
-        'container.container_port.protocol': [
-          { required: true, message: '请选择一种协议', trigger: 'change' }
-        ],
-        health_path: [
-          { required: true, message: '请输入健康检查路径', trigger: 'blur' }
-        ],
-        nocheck: []
+        resource: [
+          { message: '请选择一种协议', trigger: 'change' }
+        ]
       }
     }
   },
@@ -150,7 +131,7 @@ export default {
   methods: {
     goBack() {
       this.$router.push({
-        path: '/workload/deployment'
+        path: '/storage/persistenvolumeclaim'
       })
     },
     submitForm(formName) {
@@ -162,6 +143,7 @@ export default {
             label[element.key] = element.value
           })
           this.ruleForm.labels = label
+          this.ruleForm.storage = String(this.ruleForm.storages) + this.storage_type
           this.create()
         } else {
           return false
@@ -169,7 +151,7 @@ export default {
       })
     },
     create() {
-      this.$store.dispatch('deployment/createDeployment', this.ruleForm).then((res) => {
+      this.$store.dispatch('pvclaim/createPVClaim', this.ruleForm).then((res) => {
         this.succeed = false
         this.text = `3秒后自动返回`
         this.timer = setInterval(() => {
@@ -194,6 +176,18 @@ export default {
         this.$store.dispatch('namespace/getNamespacelist', {}).then((res) => {
           res.data.item.forEach(v => {
             this.options.push({ 'namespace': v.name, 'label': v.name })
+          })
+        })
+      }, 500)
+    },
+    remoteClass(query) {
+      this.loading = true
+      this.storageclasslist = []
+      setTimeout(() => {
+        this.loading = false
+        this.$store.dispatch('storageclass/getStorageClass', {}).then((res) => {
+          res.data.item.forEach(v => {
+            this.storageclasslist.push({ 'value': v.name, 'label': v.name })
           })
         })
       }, 500)

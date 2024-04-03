@@ -51,7 +51,7 @@
     </el-row>
     <div class="table-bg-purple">
       <el-table :data="namespacesItem" :header-cell-style="{ background: '#e6e7e9' }" size="small" empty-text="抱歉，暂无数据">
-        <el-table-column label="名称" width="200">
+        <el-table-column label="名称" width="260">
           <template #default="scope">
             <div style="display: flex; align-items: center">
               <svg class="table-icon-small" aria-hidden="true">

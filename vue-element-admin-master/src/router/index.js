@@ -220,12 +220,30 @@ export const constantRoutes = [
         }
       },
       {
+        path: 'service/create',
+        component: () => import('@/views/load-balancing/service-add.vue'),
+        name: 'Create_Service',
+        meta: {
+          title: '创建服务资源'
+        },
+        hidden: true
+      },
+      {
         path: 'ingress',
         component: () => import('@/views/load-balancing/ingress-list.vue'),
         name: 'Ingress',
         meta: {
           title: '应用路由'
         }
+      },
+      {
+        path: 'ingress/create',
+        component: () => import('@/views/load-balancing/ingress-add.vue'),
+        name: 'Create_Ingress',
+        meta: {
+          title: '创建路由资源'
+        },
+        hidden: true
       },
       {
         path: 'ingressclass',
@@ -258,12 +276,30 @@ export const constantRoutes = [
         }
       },
       {
+        path: 'configmap/create',
+        component: () => import('@/views/profiles/configmap-add.vue'),
+        name: 'Create_configmap',
+        meta: {
+          title: '创建配置字典'
+        },
+        hidden: true
+      },
+      {
         path: 'secret',
         component: () => import('@/views/profiles/secret-list.vue'),
         name: 'Secret',
         meta: {
           title: '保密字典'
         }
+      },
+      {
+        path: 'secret/create',
+        component: () => import('@/views/profiles/secret-add.vue'),
+        name: 'Create_secret',
+        meta: {
+          title: '创建保密字典'
+        },
+        hidden: true
       }
     ]
   },
@@ -288,12 +324,30 @@ export const constantRoutes = [
         }
       },
       {
+        path: 'persistenvolume/create',
+        component: () => import('@/views/storage-resources/persistenvolume-add.vue'),
+        name: 'Create_persistenvolume',
+        meta: {
+          title: '创建持久卷'
+        },
+        hidden: true
+      },
+      {
         path: 'persistenvolumeclaim',
         component: () => import('@/views/storage-resources/persistenvolumeclaim-list.vue'),
         name: 'PersistenVolumeClaim',
         meta: {
           title: '持久卷声明'
         }
+      },
+      {
+        path: 'persistenvolumeclaim/create',
+        component: () => import('@/views/storage-resources/persistenvolumeclaim-add.vue'),
+        name: 'Create_persistenvolumeclaim',
+        meta: {
+          title: '创建持久卷声明'
+        },
+        hidden: true
       },
       {
         path: 'storageclass',

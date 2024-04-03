@@ -5,7 +5,6 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	"kubeops/service"
 	"net/http"
-	"strconv"
 )
 
 type configmap struct{}
@@ -20,11 +19,11 @@ func (cm *configmap) GetConfigmapList(c *gin.Context) {
 		Limit      int    `form:"limit"`
 		Page       int    `form:"page"`
 	})
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
 	_ = c.ShouldBind(&params)
-	data, err := service.Configmaps.GetCmList(params.FilterName, params.Namespace, params.Limit, params.Page, uuid)
+	data, err := service.Configmaps.GetCmList(params.FilterName, params.Namespace, params.Limit, params.Page, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "获取配置字典列表数据失败",
 			"data": nil,
 		})
@@ -32,6 +31,7 @@ func (cm *configmap) GetConfigmapList(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
+		"code": 2000,
 		"msg":  "获取配置字典列表数据成功",
 		"data": data,
 	})
@@ -44,10 +44,10 @@ func (cm *configmap) GetConfigmapDetail(c *gin.Context) {
 		Namespace     string `form:"namespace"`
 	})
 	_ = c.ShouldBind(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	detail, err := service.Configmaps.GetCmDetail(params.Namespace, params.ConfigmapName, uuid)
+	detail, err := service.Configmaps.GetCmDetail(params.Namespace, params.ConfigmapName, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "配置字典 " + params.ConfigmapName + " 获取数据失败",
 			"data": nil,
 		})
@@ -55,6 +55,7 @@ func (cm *configmap) GetConfigmapDetail(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
+		"code": 2000,
 		"msg":  "配置字典 " + params.ConfigmapName + " 获取数据成功",
 		"data": detail,
 	})
@@ -63,21 +64,22 @@ func (cm *configmap) GetConfigmapDetail(c *gin.Context) {
 // DelConfigmap    删除 Configmap 资源
 func (cm *configmap) DelConfigmap(c *gin.Context) {
 	params := new(struct {
-		ConfigmapName string `form:"configmap_name"`
-		Namespace     string `form:"namespace"`
+		ConfigmapName string `json:"configmap_name"`
+		Namespace     string `json:"namespace"`
 	})
-	_ = c.ShouldBind(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.Configmaps.DelCm(params.Namespace, params.ConfigmapName, uuid)
+	_ = c.ShouldBindJSON(&params)
+	err := service.Configmaps.DelCm(params.Namespace, params.ConfigmapName, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "配置字典 " + params.ConfigmapName + " 删除失败" + err.Error(),
 			"data": nil,
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"msg": "配置字典 " + params.ConfigmapName + " 删除成功",
+		"code": 2000,
+		"msg":  "配置字典 " + params.ConfigmapName + " 删除成功",
 	})
 }
 
@@ -87,10 +89,10 @@ func (cm *configmap) CreateConfigmap(c *gin.Context) {
 		Data *service.CreateConfig `json:"data"`
 	})
 	_ = c.ShouldBindJSON(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.Configmaps.CreateCm(params.Data, uuid)
+	err := service.Configmaps.CreateCm(params.Data, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "配置字典 " + params.Data.Name + " 创建失败" + err.Error(),
 			"data": nil,
 		})
@@ -98,7 +100,8 @@ func (cm *configmap) CreateConfigmap(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"msg": "配置字典 " + params.Data.Name + " 创建成功",
+		"code": 2000,
+		"msg":  "配置字典 " + params.Data.Name + " 创建成功",
 	})
 }
 
@@ -109,16 +112,17 @@ func (cm *configmap) UpdateConfigmap(c *gin.Context) {
 		Data      *corev1.ConfigMap `json:"data"`
 	})
 	_ = c.ShouldBindJSON(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.Configmaps.UpdateCm(params.Namespace, params.Data, uuid)
+	err := service.Configmaps.UpdateCm(params.Namespace, params.Data, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"msg": "配置字典 " + params.Data.Name + " 更新失败" + err.Error(),
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
+			"msg":  "配置字典 " + params.Data.Name + " 更新失败" + err.Error(),
 		})
 		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"msg": "配置字典 " + params.Data.Name + " 更新成功",
+		"code": 2000,
+		"msg":  "配置字典 " + params.Data.Name + " 更新成功",
 	})
 }

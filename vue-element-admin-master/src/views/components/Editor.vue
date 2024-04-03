@@ -9,6 +9,8 @@
           enableBasicAutocompletion: true,
           enableSnippets: true,
           enableLiveAutocompletion: true,
+          // showInvisibles: true, // 显示不可见字符（如换行符和制表符）
+          wrap: true, //启动软换行
           tabSize: 6,
           fontSize: 14,
           showPrintMargin: false, //去除编辑器里的竖线

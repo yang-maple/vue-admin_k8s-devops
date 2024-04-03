@@ -4,26 +4,48 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fbc361f-131c-4c35-8188-d10a8dca2e78" name="Changes" comment="">
+    <list default="true" id="eedb6b4a-8a4d-4bd8-93be-3b45e005c115" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/kubeops_server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kubeops_server.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/daemonset.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/daemonset.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/deployment.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/deployment.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/pod.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/pod.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/statefulset.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/statefulset.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/configmap.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/configmap.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/ingress.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ingress.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/ingressclass.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ingressclass.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/namespaces.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/namespaces.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/node.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/node.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/persistentvolume.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/persistentvolume.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/persistentvolumeclaim.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/persistentvolumeclaim.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/secret.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/secret.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/storageclass.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/storageclass.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/configmap.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/configmap.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/ingress.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/ingress.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/secret.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/secret.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/service.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/logs/gin_kubeOps.log" beforeDir="false" afterPath="$PROJECT_DIR$/static/logs/gin_kubeOps.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/styles/anticon.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/styles/anticon.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/cluster-resources/namespace-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/cluster-resources/namespace-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/cluster-resources/node-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/cluster-resources/node-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/components/Editor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/components/Editor.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/components/LabelTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/components/LabelTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/load-balancing/ingress-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/load-balancing/ingress-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/load-balancing/ingressclass-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/load-balancing/ingressclass-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/load-balancing/service-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/load-balancing/service-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/profiles/configmap-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/profiles/configmap-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/profiles/secret-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/profiles/secret-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/storage-resources/persistenvolume-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/storage-resources/persistenvolume-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/storage-resources/persistenvolumeclaim-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/storage-resources/persistenvolumeclaim-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/storage-resources/storageclass-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/storage-resources/storageclass-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/deployment-add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/deployment-add.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/pod-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master/src/views/workloads/pod-list.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Go File" />
-      </list>
-    </option>
   </component>
   <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../golang" />
   <component name="Git.Settings">
@@ -36,14 +58,13 @@
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2e9yfYYJGEhP53NdBFz0vUy6bLh" />
+  <component name="ProjectId" id="2eTuyy6wjsgogXgpCjXKaynHTJ1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
@@ -76,8 +97,8 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/controller/deployment.go</url>
-          <line>182</line>
+          <url>file://$PROJECT_DIR$/controller/persistentvolume.go</url>
+          <line>38</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

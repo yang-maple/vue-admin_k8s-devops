@@ -71,7 +71,7 @@
         <el-table-column label="名称" width="200">
           <template #default="scope">
             <div style="display: flex; align-items: center">
-              <span>
+              <span style="font-size: 14px;color: blueviolet;">
                 {{ scope.row.name }}
               </span>
             </div>

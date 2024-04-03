@@ -5,7 +5,6 @@ import (
 	networkv1 "k8s.io/api/networking/v1"
 	"kubeops/service"
 	"net/http"
-	"strconv"
 )
 
 var IngressClass ingressClass
@@ -22,11 +21,10 @@ func (ic *ingressClass) GetIngressClassList(c *gin.Context) {
 	})
 	_ = c.ShouldBind(&params)
 	//从header获取uuid，并转为int
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	data, err := service.IngressClass.GetIngressClass(params.FilterName, params.Limit, params.Page, uuid)
+	data, err := service.IngressClass.GetIngressClass(params.FilterName, params.Limit, params.Page, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"code": 400,
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "获取应用路由类型列表失败",
 			"data": nil,
 		})
@@ -34,7 +32,7 @@ func (ic *ingressClass) GetIngressClassList(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"code": 200,
+		"code": 2000,
 		"msg":  "获取应用路由类型列表成功",
 		"data": data,
 	})
@@ -45,17 +43,16 @@ func (ic *ingressClass) GetIngressClassList(c *gin.Context) {
 func (ic *ingressClass) GetIngressClassDetail(c *gin.Context) {
 	param := c.Query("Name")
 	//从header获取uuid，并转为int
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	data, err := service.IngressClass.GetIngressClassDetail(param, uuid)
+	data, err := service.IngressClass.GetIngressClassDetail(param, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"code": 400,
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "应用路由类型 " + param + " 获取数据失败",
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"code": 200,
+		"code": 2000,
 		"msg":  "应用路由类型 " + param + " 获取数据成功",
 		"data": data,
 	})
@@ -66,17 +63,16 @@ func (ic *ingressClass) GetIngressClassDetail(c *gin.Context) {
 func (ic *ingressClass) DelIngressClass(c *gin.Context) {
 	param := c.Query("Name")
 	//从header获取uuid，并转为int
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.IngressClass.DelIngressClass(param, uuid)
+	err := service.IngressClass.DelIngressClass(param, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"code": 400,
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "应用路由类型 " + param + " 删除失败" + err.Error(),
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"code": 200,
+		"code": 2000,
 		"msg":  "应用路由类型 " + param + " 删除成功",
 	})
 }
@@ -87,16 +83,17 @@ func (ic *ingressClass) UpdateIngressClass(c *gin.Context) {
 		Data *networkv1.IngressClass `json:"data"`
 	})
 	_ = c.ShouldBindJSON(&param)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.IngressClass.UpdateIngressClass(param.Data, uuid)
+	err := service.IngressClass.UpdateIngressClass(param.Data, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "应用路由类型 " + param.Data.Name + " 更新失败" + err.Error(),
 			"data": nil,
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
+		"code": 2000,
 		"msg":  "应用路由类型 " + param.Data.Name + " 更新成功",
 		"data": nil,
 	})

@@ -5,7 +5,6 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	"kubeops/service"
 	"net/http"
-	"strconv"
 )
 
 type persistentvolume struct{}
@@ -20,16 +19,17 @@ func (p *persistentvolume) GetPersistentVolumeList(c *gin.Context) {
 		Page       int    `form:"page"`
 	})
 	_ = c.ShouldBind(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	data, err := service.Persistenvolume.GetPvList(params.FilterName, params.Limit, params.Page, uuid)
+	data, err := service.Persistenvolume.GetPvList(params.FilterName, params.Limit, params.Page, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "获取持久卷列表失败",
 			"data": nil,
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
+		"code": 2000,
 		"msg":  "获取持久卷列表成功",
 		"data": data,
 	})
@@ -41,10 +41,10 @@ func (p *persistentvolume) GetPersistentVolumeDetail(c *gin.Context) {
 		PersistentVolumeName string `form:"persistent_volume_name"`
 	})
 	_ = c.ShouldBind(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	data, err := service.Persistenvolume.GetPvDetail(params.PersistentVolumeName, uuid)
+	data, err := service.Persistenvolume.GetPvDetail(params.PersistentVolumeName, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "持久卷 " + params.PersistentVolumeName + " 获取数据失败",
 			"data": nil,
 		})
@@ -52,7 +52,7 @@ func (p *persistentvolume) GetPersistentVolumeDetail(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"msg":  "持久卷 " + params.PersistentVolumeName + " 获取数据成功",
+		"code": 2000,
 		"data": data,
 	})
 }
@@ -60,20 +60,21 @@ func (p *persistentvolume) GetPersistentVolumeDetail(c *gin.Context) {
 // DelPersistentVolume 删除 PersistentVolume 资源
 func (p *persistentvolume) DelPersistentVolume(c *gin.Context) {
 	params := new(struct {
-		PersistentVolumeName string `form:"persistent_volume_name"`
+		PersistentVolumeName string `json:"persistent_volume_name"`
 	})
-	_ = c.ShouldBind(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.Persistenvolume.DelPv(params.PersistentVolumeName, uuid)
+	_ = c.ShouldBindJSON(&params)
+	err := service.Persistenvolume.DelPv(params.PersistentVolumeName, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "持久卷 " + params.PersistentVolumeName + " 删除失败" + err.Error(),
 			"data": nil,
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"msg": "持久卷 " + params.PersistentVolumeName + " 删除成功",
+		"code": 2000,
+		"msg":  "持久卷 " + params.PersistentVolumeName + " 删除成功",
 	})
 }
 
@@ -83,17 +84,18 @@ func (p *persistentvolume) CreatePersistentVolume(c *gin.Context) {
 		Data *service.CreatePVConfig `json:"data"`
 	})
 	_ = c.ShouldBindJSON(&createPv)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.Persistenvolume.CreatePv(createPv.Data, uuid)
+	err := service.Persistenvolume.CreatePv(createPv.Data, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
 			"msg":  "持久卷 " + createPv.Data.Name + " 创建失败：" + err.Error(),
 			"data": nil,
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"msg": "持久卷 " + createPv.Data.Name + " 创建成功",
+		"code": 2000,
+		"msg":  "持久卷 " + createPv.Data.Name + " 创建成功",
 	})
 }
 
@@ -103,16 +105,17 @@ func (p *persistentvolume) UpdatePersistentVolume(c *gin.Context) {
 		Data *corev1.PersistentVolume `json:"data"`
 	})
 	_ = c.ShouldBindJSON(&params)
-	uuid, _ := strconv.Atoi(c.Request.Header.Get("Uuid"))
-	err := service.Persistenvolume.UpdatePv(params.Data, uuid)
+	err := service.Persistenvolume.UpdatePv(params.Data, *DeliverUid(c))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"msg": "持久卷 " + params.Data.Name + " 更新失败：" + err.Error(),
+		c.JSON(http.StatusOK, gin.H{
+			"code": 4000,
+			"msg":  "持久卷 " + params.Data.Name + " 更新失败：" + err.Error(),
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"msg": "持久卷 " + params.Data.Name + " 更新成功",
+		"code": 2000,
+		"msg":  "持久卷 " + params.Data.Name + " 更新成功",
 	})
 
 }

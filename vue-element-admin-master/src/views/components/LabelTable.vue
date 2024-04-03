@@ -19,7 +19,7 @@
       <el-table-column prop="value" label="值" center width="190">
         <template slot-scope="{row}">
           <template>
-            <el-input v-model="row.value" class="edit-input" size="small" />
+            <el-input v-model="row.value" class="edit-input" :type="buttontype" :autosize="buttonsize" size="small" />
           </template>
         </template>
       </el-table-column>
@@ -34,6 +34,16 @@
 
 <script>
 export default {
+  props: {
+    buttontype: {
+      type: String,
+      default: 'text' // 设置默认为空字符串或其他适合的默认值
+    },
+    buttonsize: {
+      type: Boolean,
+      default: true
+    }
+  },
   data() {
     return {
       showtable: false,
